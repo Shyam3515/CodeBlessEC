@@ -1,0 +1,126 @@
+******\*\*\*\*******uses of UseRef Hook********\******\***
+
+1. For accessing the DOM elements.
+2. For creating the mutable variable which will not re-render the component.
+
+Now what we want to do is when we click on this show password button, we want to set our input type to simple text.And when we click on hide button, then we will set type to password again. So for that we need to access this input field. Now let's see how we can do that using use ref hook.
+
+****\*\*****Now you might ask what is the best way for handling form?****\*\*****
+
+=> Use ref or use state.
+So the answer is use state, but use-ref also useful if we have up to ten input fields.
+
+Because when we use use-ref that will not cause rerender the component. So if we have 5 to 6 form fields then we can simply use use-state hook only, use use-ref hook for handling
+form if UseState is causing performance issue. Use use-ref hook for accessing elements.
+
+const nameRef = useRef(null);
+const phoneRef = useRef(null);
+const user = {
+name: "",
+phone: 0,
+};
+user.name = nameRef.current.value;
+user.phone = parseInt(phoneRef.current.value);
+
+ref={nameRef}
+ref={phoneRef};
+
+//We know that all input fields in HTML have a value property for maintaining its own state
+
+********React Hook Form*********
+1.This library will help us to build quick forms and we don't need to worry about managing form state.
+2.This library does that automatically in very less code.
+
+******** use Form Hook ******
+So essentially this react hook form will use ref-hook for handling the form.
+So as I told you, we have to use this react hook-form for complex form and when we have complex form we use ref-hoke.
+
+********Form Validation********
+Form validation is a technique to ensure user entered data correctly or not.
+For example, here we have our name field, and user enter only two characters. Then we have to show error to user like name should be three or more characters.
+We face this type of error many times. This is called as form validation.
+
+**********Errors*********
+Now let's see how we can get errors of our form.
+So for that we have one property called form state.
+In this use form hook.
+
+So add that here and simply console.log this form state. Save this and take a look.
+Refresh the page and see. Here we get object. And inside it we have couple of properties like errors is loading is submitted, is valid and so on.
+
+
+*******OPtional Changing*********
+So this question mark and period is called as optional chaining[?.].
+We need this because, this error object can be empty, which means if we have no errors in this name field, we don't get errors, dot name property. And if we don't have this errors, dot name property and then we want to access this type property, then it will give us error.So this question mark will tell browser if errors dot name is available only then check this condition. Otherwise ignore it.
+
+
+*******Schema Based validation*********
+So in the previous lesson we had the form validation in between our markup.
+Now, if in future we have complex form, then our markup gets really complex and our code will no more
+maintainable. So in this situation we can use another technique called schema based validation.
+So in schema based validation, we can keep all our validation rules in a single place.
+So there are a couple of libraries like Yup and ZOD. Currently ZOD is very famous, so we will use that.
+
+Now let's add validation using Zod.
+So at the top we import Z from Zod.
+And also import export resolver from hook form.
+Slash resolver slash Zod.
+Why we need this Zod resolver right for applying schema with react hook form.
+
+
+********hook form/resolvers**********
+Now, you might ask, how can we apply this schema to our form?
+So for that we need one more library called hook form slash resolvers.
+By using these resolvers, we can easily add our source schema in our react hook form.
+Now at the top we import our resolver from hook form slash resolvers slash sword.
+import {zodResolver} from '@hookform/resolvers/zod';
+***Recap***
+So first of all, using 'Z' method, we create our validation schema, which is the set of rules for form fields.
+And then using resolver, we apply this schema to our react hook form.
+So when we have errors, it will directly add to react hook form error.
+
+
+**********URL.create object URL***********8
+So the reason is here we simply return our profile pic object, which is not the image.
+So we have to convert this object to image.
+And how can we do that?
+Simply by using create object method.
+
+=>So URL.create object URL is a method in JavaScript that allows us to create a unique URL for a given file.
+=>This URL is used to display image in image tag or playing audio or video file in media player.
+=>Note that this is only temporary URL, which means if we close our page then it will go away.
+
+
+**************Backend**********
+So to fill this data in our database, we just write here "node products.js" file and hit enter.
+
+And in our backend in VsCode we run node index.js and hit enter.
+See we get, server is running on port 5000 and also database connected.
+
+=>http://localhost:5000/api/category
+Now, don't close this terminal without this terminal running.
+We can't connect our React application with back end.
+So make sure it is running while we are making API calls.
+
+
+***************Custom Hooks**************
+So custom hooks are basically a reusable function.
+In simple terms, custom hooks are our own hooks that we create for our own use, and we can use them multiple times in our project.
+
+
+**************Libraries************
+1.react-loading-skeleton
+2.hook form/resolvers, zod
+3.react-router-dom
+4.React Hook Form
+5.Material UI
+
+
+**********Thunder Client*************
+First of all, let's see register API for our user.
+So for testing API, we have two option. We can use Postman, which is the external application specially designed for testing any kind of APIs or we can use vs code extension called Thunder client, which has almost same features.
+So for simplicity I'm going to use vs code extension, but you can use Postman also.
+
+=>Use Form Data for sending file to the server.
+So for sending any files like images, audio, video, anything, we have to use form data, which is the another way to send data with our API request because in Json format we can't send our file.
+So instead of selecting Json from here, we can select form.
